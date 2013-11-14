@@ -1,0 +1,60 @@
+<script type="text/javascript">
+
+	function validterms() {
+		if(document.getElementById("accept").checked) {
+			return true;
+		} else {
+			alert("Vous devez accepter les conditions du concours pour enregistrer votre participation");
+			return false;
+		}
+	}
+
+</script>
+
+<%= form_for(@subscription) do |f| %>
+  <table>
+	<tr>
+		<td class="label">Titre &nbsp;</td>
+		<td><%= f.select :title, { "Madame" => "Madame", "Monsieur" => "Monsieur" }  %></td>
+	</tr>
+	<tr>
+		<td class="label">Pr&eacute;nom*&nbsp;</td>
+		<td><%= f.text_field :firstname %></td>
+	</tr>
+	<tr>
+		<td class="label">Nom*&nbsp;</td>
+		<td><%= f.text_field :lastname %></td>
+	</tr>
+	<tr>
+		<td class="label">Courriel*&nbsp;</td>
+		<td><%= f.email_field :email %></td>
+	</tr>
+	<tr>
+		<td class="label">T&eacute;l&eacute;phone*&nbsp;</td>
+		<td><%= f.text_field :telephone %></td>
+	</tr>
+	<tr>
+		<td class="label"><%= f.check_box :newsletter %></td><td class="checkbox-title">Je souhaite recevoir l'infolettre de La Compagnie</td>
+	</tr>
+	<tr>
+		<td class="label"><%= check_box_tag 'accept', '', false, :class => "regular-checkbox" %></td>
+		<td class="checkbox-title">
+			J'accepte 
+			<a href="#" onClick="window.open('/rules?v=201311081635','_blank','toolbar=no, location=no, directories=no, status=no, menubar=no, scrollbars=yes, resizable=yes, copyhistory=no, width=900, height=700');">les conditions et modalit&eacute;s</a>
+			du concours
+		</td>
+	</tr>
+	<tr>
+		<td colspan="2">
+			<div class="actions">
+				<%= submit_tag("Participer", :disabled => false, :class => 'submit', :onclick => "return validterms();") %>
+			</div>
+		</td>
+	</tr>
+	<tr id="required">
+		<td></td>
+		<td style="text-align: right;">* Champ obligatoire</td>
+	</tr>
+  </table>
+  
+<% end %>

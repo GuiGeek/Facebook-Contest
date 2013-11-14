@@ -1,0 +1,71 @@
+<% start_date = !Subscription.first.nil? ? Subscription.first.created_at : DateTime.current %>
+<% end_date = !Subscription.last.nil? ? Subscription.last.created_at : DateTime.current %>
+
+<h1>Listing subscriptions</h1>
+
+<script type="text/javascript" charset="utf-8">
+  $(function () {
+    Highcharts.setOptions({
+      global : {
+        useUTC : false
+      }
+    });
+    
+    new Highcharts.Chart({
+      chart: { renderTo: 'subscriptions_chart' },
+	    title: { text: 'Subscriptions by Day' },
+      xAxis: { type: 'datetime' },
+      yAxis: {
+        title: { text: 'Number of subscription'},
+		    min: 0
+      },
+	    tooltip: {
+        formatter: function () {
+          return Highcharts.dateFormat("%B %e %Y", this.x) + ': ' +
+            this.y + " subscription(s)";
+        }
+      },
+      series: [{
+	    pointInterval: <%= 1.day * 1000 %>,
+        pointStart: <%= start_date.to_i * 1000 %>,
+        data: <%= (start_date.to_date..end_date.to_date).map { |date| Subscription.total_by_day(date).to_f }.inspect %>
+      }]
+    });
+  });
+</script>
+
+<div id="subscriptions_chart" style="width: 560px; height: 300px;"></div>
+
+<h3 style="color:#E00007;"><%= @subscriptions.count %> inscrits</h3>
+
+<table>
+  <tr>
+    <th>ID</th>
+    <th>Title</th>
+    <th>Firstname</th>
+    <th>Lastname</th>
+    <th>Email</th>
+    <th>City</th>
+    <th>Telephone</th>
+    <th>Newsletter</th>
+	<th>Date</th>
+  </tr>
+
+<% @subscriptions.each do |subscription| %>
+  <tr>
+    <td><%= link_to subscription.id, subscription_path(subscription) %></td>
+    <td><%= subscription.title %></td>
+    <td><%= subscription.firstname %></td>
+    <td><%= subscription.lastname %></td>
+    <td><%= subscription.email %></td>
+    <td><%= subscription.city %></td>
+    <td><%= subscription.telephone %></td>
+    <td><%= subscription.newsletter %></td>
+    <td><%= subscription.created_at %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'Get Subscriptions in CSV', '/subscriptions/csv.csv' %>

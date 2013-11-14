@@ -1,0 +1,77 @@
+== Welcome to Facebook contest
+
+Facebook contest is a web app built with Ruby On Rails.
+The app must store facebook user subscription in database in order to draw one of them at the end.
+Users must like the page, where app is used, to access form. otherwise they access to another page inviting us to like.
+After subscription, user is redirect to a thanks page.
+
+See Mockup[https://github.com/GuiGeek/facebook-contest/blob/master/doc/mockup.png]
+
+=== Navigation
+
+        o--> subscriptions/liked --> (if user like page) --> subscriptions/new --> subscriptions/thanks/:id [Opened contest]
+        \                        \
+         \                        o--> subscriptions/liked
+          \
+           o--> subscriptions/closed [Closed contest]
+
+=== Requirement
+
+  You need a facebook app, as "Page Tab", created on https://developers.facebook.com/apps/.
+  
+  Source: https://developers.facebook.com/docs/appsonfacebook/pagetabs/)
+
+=== Getting Started  
+
+1. Setup Facebook ID:
+
+        #app/views/layout/application.html.erb
+        #Set Facebook appId
+        line 16: appId : 'YOUR FACEBOOK APP ID',
+        
+        #app/controllers/subscriptions_controller.rb
+        #Set Facebook app secret
+        line 55: @decoded_request = Canvas.parse_signed_request("YOUR APP SECRET",params[:signed_request])
+
+2. Replace images to your own:
+
+        #app/assets/images
+        > liked.jpg
+        > header.jpg
+        > thanks.jpg
+        > closed.jpg
+
+3. Replace rules by your own:
+
+        #app/public/rules.html
+        Edit text
+        
+        #Force browsers update adding parameter to link
+        #app/views/subscriptions/_form.html.erb
+        line 43: window.open('/rules?v=...'
+
+4. Update clickable zone on image in thanks page if you need it. Otherwise delete it:
+
+        #Tips: Use photoshop or other to detect coords with cursor (top-left,bottom-right)
+        #app/subscriptions/views/thanks.html.erb
+        coords="140,370,670,415"
+        
+5. Generate Database
+
+        rake db:migrate
+  
+6. Then add app to your page as "page tab" (https://developers.facebook.com/docs/reference/dialogs/add_to_page/)
+
+        - Go to https://www.facebook.com/dialog/pagetab?app_id=YOUR_APP_ID&redirect_uri=https://www.facebook.com
+        - Select your page
+  
+=== Results
+
+You can view results on http://HOSTNAME_OR_IPADDRESS/subscriptions/ and export them in CSV, in order to pickup one of them (the winner).
+
+*HTTP-PASSWORD*
+
+- admin
+- password
+
+

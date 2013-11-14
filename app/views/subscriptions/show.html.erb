@@ -1,0 +1,39 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Title:</b>
+  <%= @subscription.title %>
+</p>
+
+<p>
+  <b>Firstname:</b>
+  <%= @subscription.firstname %>
+</p>
+
+<p>
+  <b>Lastname:</b>
+  <%= @subscription.lastname %>
+</p>
+
+<p>
+  <b>Email:</b>
+  <%= @subscription.email %>
+</p>
+
+<p>
+  <b>City:</b>
+  <%= @subscription.city %>
+</p>
+
+<p>
+  <b>Telephone:</b>
+  <%= @subscription.telephone %>
+</p>
+
+<p>
+  <b>Newsletter:</b>
+  <%= @subscription.newsletter %>
+</p>
+
+<%= link_to 'Back', subscriptions_path %> |
+<%= link_to 'Destroy', @subscription, confirm: 'Are you sure?', method: :delete %>

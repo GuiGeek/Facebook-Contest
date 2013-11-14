@@ -1,0 +1,197 @@
+/*
+ * Common styles
+ */
+
+div, span, object, iframe, h1, h2, h3, h4, h5, h6, p, a, em, img, fieldset, strong, ol, ul, li, dl, dt, dd, form, label, table, tr, th, td {
+	margin: 0;
+	padding: 0;
+}
+
+body {
+  background-color: #fff;
+  color: #000;
+  font-family: "Segoe UI", Helvetica, Arial, sans-serif;
+  font-size: 13px;
+}
+
+p, ol, ul, td {
+  
+}
+
+tr {
+	height: 50px;
+}
+
+tr#required {
+	height: 20px;
+}
+
+td {
+	
+}
+
+pre {
+  background-color: #eee;
+  padding: 10px;
+  font-size: 11px;
+}
+
+a {
+  color: #ee1c24;
+  text-decoration: none;
+  &:visited {
+    color: #ee1c24;
+  }
+  &:hover {
+    color: #ed8486;
+  }
+}
+
+div {
+  &.field, &.actions {
+    margin-bottom: 10px;
+  }
+}
+
+/*
+ * Suscribe form
+ */
+
+#fields table {
+	margin: 0px auto;
+}
+
+.actions {
+	text-align: center;
+}
+
+.error {
+  color: red;
+}
+
+.notice {
+  color: green;
+}
+
+#reset {
+	float: right;
+}
+
+.field_with_errors {
+  padding: 2px;
+  background-color: red;
+  display: table;
+}
+
+.validation-error {
+  padding: 2px;
+  color: red;
+}
+
+.error {
+  color: red;
+  font-size: 11px;
+}
+
+.error input {
+  border: 1px solid red;
+}
+
+.label {
+  text-align: right;
+  font-size: 18px;
+  font-weight: normal;
+}
+
+.require {
+}
+
+.checkbox-title {
+  text-align: left;
+  font-size: 16px;
+  font-weight: normal;
+}
+
+input, select {
+  font-size: 18px;
+  border: 1px solid #999; 
+}
+
+input {
+	padding: 2px 4px 2px 4px;
+}
+
+input[type="checkbox"] {
+	border: 0;
+	width: 15px;
+	height: 15px;
+}
+
+.submit {
+	font-size: 15px;
+	color: #fff;
+	border-radius: 2px;
+	-moz-border-radius: 2px;
+	-webkit-border-radius: 2px;
+	-webkit-box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+	-moz-box-shadow: rgba(0,0,0,0.15) 0px 1px 3px;
+	box-shadow: rgba(0, 0, 0, 0.15) 0px 1px 3px;
+	border: solid 1px #adaeaf;
+	background-image: linear-gradient(top, #ed6165 0%, #ee1c24 100%);
+	background-image: -webkit-linear-gradient(top, #ed6165 0%, #ee1c24 100%);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ed6165),color-stop(1, #ee1c24));
+	background-image: -moz-linear-gradient(top, #ed6165 0%, #ee1c24 100%);
+	background-image: -o-linear-gradient(top, #ed6165 0%, #ee1c24 100%);
+	background-image: -ms-linear-gradient(top, #ed6165 0%, #ee1c24 100%);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ed6165, endColorstr=#ee1c24)";
+	display: inline;
+	margin-right: 5px;
+	padding: 6px 15px;
+	cursor: pointer;
+}
+
+.submit:hover {
+	background-image: linear-gradient(top, #ed8486 0%, #ee1c24 100%);
+	background-image: -webkit-linear-gradient(top, #ed8486 0%, #ee1c24 100%);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ed8486),color-stop(1, #ee1c24));
+	background-image: -moz-linear-gradient(top, #ed8486 0%, #ee1c24 100%);
+	background-image: -o-linear-gradient(top, #ed8486 0%, #ee1c24 100%);
+	background-image: -ms-linear-gradient(top, #ed8486 0%, #ee1c24 100%);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ed8486, endColorstr=#ee1c24)";
+}
+
+.submit:active {
+	color: #f0f0f0;
+	border: solid 1px #8e8f8f;
+	background-image: linear-gradient(top, #ee1c24 0%, #ed6165 100%);
+	background-image: -webkit-linear-gradient(top, #ee1c24 0%, #ed6165 100%);
+	background-image: -webkit-gradient(linear,left top,left bottom,color-stop(0, #ee1c24),color-stop(1, #ed6165));
+	background-image: -moz-linear-gradient(top, #ee1c24 0%, #ed6165 100%);
+	background-image: -o-linear-gradient(top, #ee1c24 0%, #ed6165 100%);
+	background-image: -ms-linear-gradient(top, #ee1c24 0%, #ed6165 100%);
+	-ms-filter: "progid:DXImageTransform.Microsoft.gradient(startColorstr=#ee1c24, endColorstr=#ed6165)";
+}
+
+.submit:disabled {
+  opacity: 0.4;
+  cursor: default;
+  background-color: #221e1f;
+  background-image: none;
+}
+
+/*
+ * Like page
+ */
+ 
+#like {
+  margin-top: 50px;
+}
+
+/*
+ * Thanks page
+ */
+
+#thanks {
+  margin: 0;
+  border: 0;
+}
